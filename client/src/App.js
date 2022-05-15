@@ -169,11 +169,36 @@ const App = () => {
             </form>
             <div className="airnft-grid">
               {/* We use index as the key instead, also, the src is now item.gifLink */}
-              {gifList.map((item, index) => (
-                <div className="airnft-item" key={index}>
-                  <iframe width={500} height={400} sandbox='allow-scripts allow-modal' src={item.gifLink} />
-                </div>
-              ))}
+              {gifList.map((item, index) => {
+                if (index >= 3) {
+                  return (
+                    <div className="gif-item" key={index}>
+                      {/* <img src={item.gifLink} /> */}
+                      <iframe
+                        id={"air-nft-" + index}
+                        className="air-nft-Frame"
+                        src={item.gifLink}
+                      ></iframe>
+                      <div className="gif-item-info">
+                        Your search for interactive NFTs ends here! 
+                        <button
+                          className="playNFT"
+                          onClick={() => {
+                            window.location.reload();
+                            var container = document.getElementById(
+                              "air-nft-" + index
+                            );
+                            var content = container.innerHTML;
+                            container.innerHTML = content;
+                          }}
+                        >
+                          Refresh
+                        </button>
+                      </div>
+                    </div>
+                  );
+                }
+              })}
             </div>
           </div>
         )
