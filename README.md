@@ -1,2 +1,2 @@
 # airnft
-Rust Smart Contract for Interactive NFTs
+Rust Smart Contract & Front End for launching Interactive NFTs
